@@ -24,20 +24,20 @@ end
 # ./site_cookbooks/templates/default/nginx.conf.erbを元にして
 # nginxの設定ファイルを決まったところに置くよという指示
 # Chefの規約にのおかげで置き場所のパスやテンプレートファイルは省略できている
-#template "/etc/nginx/nginx.conf" do
+template "/etc/nginx/nginx.conf" do
   # ownerとgroupはrootユーザーでパーミッションは644
-#  owner "root"
-#  group "root"
-#  mode 0644
-
-  # この動作のあとでnginxを再起動してねという指示
-#  notifies :reload, "service[nginx]"
-#end
-template "/etc/nginx/conf.d/default.conf" do
   owner "root"
-  owner "root"
+  group "root"
   mode 0644
 
+  # この動作のあとでnginxを再起動してねという指示
   notifies :reload, "service[nginx]"
 end
+#template "/etc/nginx/conf.d/default.conf" do
+#  owner "root"
+#  owner "root"
+#  mode 0644
+
+#  notifies :reload, "service[nginx]"
+#end
 
