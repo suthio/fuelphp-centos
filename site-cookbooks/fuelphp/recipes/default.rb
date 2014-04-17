@@ -6,6 +6,13 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
+%w(git curl).each do |package|
+  package package do
+    action :install
+  end
+end
+
 execute "fuelphp install" do
   user "root"
   command <<-EOH

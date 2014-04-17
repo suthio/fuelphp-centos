@@ -1,0 +1,23 @@
+server {
+    listen       80;
+    server_name  127.0.0.1;
+
+    root   /usr/share/nginx/www/blog/public;
+    index index.php;
+    location / {
+        try_files $uri /index.php?$uri&$args;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/www;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_param  FUEL_ENV  development;
+        include        fastcgi_params;
+    }
+}
