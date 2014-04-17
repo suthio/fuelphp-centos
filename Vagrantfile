@@ -49,4 +49,7 @@ Vagrant.configure("2") do |config|
 
   config.omnibus.chef_version = :latest
   config.vm.provision "shell", inline: $script
+  config.vm.provision :serverspec do |spec|
+    spec.pattern = 'spec/*_spec.rb'
+  end
 end
