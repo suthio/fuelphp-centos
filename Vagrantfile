@@ -1,6 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$script = <<SCRIPT
+sudo ln -s /vagrant/fuelphp/ /usr/share/nginx/www/
+sudo chmod -R 777 /vagrant/fuelphp
+# mysqlのモジュール（あとでChefに追加を行なう予定）
+sudo apt-get install php5-mysql
+SCRIPT
+
 Vagrant.configure("2") do |config|
   config.vm.hostname = "vagrant-fuel-berkshelf"
 
@@ -41,4 +48,5 @@ Vagrant.configure("2") do |config|
   end 
 
   config.omnibus.chef_version = :latest
+  config.vm.provision "shell", inline: $script
 end

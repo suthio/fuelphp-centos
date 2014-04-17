@@ -11,6 +11,15 @@ package "nginx" do
   action :install
 end
 
+directory "/usr/local/nginx/logs" do
+  owner "root" 
+  group "root" 
+  recursive true
+  mode 0755
+  action :create
+  #not_if { File.exists "/usr/local/nginx/logs" }
+end
+
 service "nginx" do
   # nginx がサポートしている機能を教えてあげます。
   # restartとかできるよーという意味らしい。
