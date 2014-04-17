@@ -1,5 +1,6 @@
 site :opscode
 
-cookbook "yum"
+cookbook "apt"
+cookbook "nginx"
 cookbook "mysql"
 cookbook "php"
