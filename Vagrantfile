@@ -30,6 +30,8 @@ Vagrant.configure("2") do |config|
     # Chefを実行
     chef.cookbooks_path = ["./site-cookbooks","./cookbooks"]
     chef.add_recipe     "base::role"
+    chef.add_recipe     "php5-fpm"
+    chef.add_recipe     "fuelphp"
     #chef.add_recipe    "apt"
     #chef.add_recipe    "nginx"
     #chef.add_recipe    "apt"
