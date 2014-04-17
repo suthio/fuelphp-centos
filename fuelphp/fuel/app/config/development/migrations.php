@@ -6,7 +6,7 @@ return array(
 		array(
 			'default' => 
 			array(
-				0 => '001_create_demo_scaffolds',
+				0 => '002_create_notes',
 			),
 		),
 		'module' => 
