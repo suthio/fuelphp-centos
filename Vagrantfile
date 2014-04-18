@@ -2,10 +2,8 @@
 # vi: set ft=ruby :
 
 $script = <<SCRIPT
-sudo ln -s /vagrant/fuelphp/ /usr/share/nginx/www/
+sudo ln -s /vagrant/fuelphp/ /usr/share/nginx/html/
 sudo chmod -R 777 /vagrant/fuelphp
-# mysqlのモジュール（あとでChefに追加を行なう予定）
-sudo apt-get install php5-mysql
 SCRIPT
 
 Vagrant.configure("2") do |config|
@@ -40,6 +38,7 @@ Vagrant.configure("2") do |config|
     # Chefを実行
     chef.cookbooks_path = ["./site-cookbooks","./cookbooks"]
     chef.add_recipe     "base::role"
+    chef.add_recipe     "php5"
     chef.add_recipe     "php5-fpm"
     chef.add_recipe     "fuelphp"
     chef.add_recipe    "nginx"
