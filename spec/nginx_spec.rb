@@ -18,6 +18,6 @@ describe port(80) do
     it { should be_listening }
 end
  
-describe file('/usr/share/nginx/www/index.html') do
+describe file('/usr/share/nginx/html/index.html') do
     it { should be_file }
 end
