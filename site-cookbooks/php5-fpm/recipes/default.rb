@@ -7,14 +7,14 @@
 # All rights reserved - Do Not Redistribute
 #
 
-package 'php5-fpm' do
+package 'php54-fpm' do
   action :install
 end
 # apacheの起動 CentOSの場合
-service "php5-fpm"do
+service "php-fpm"do
     action [:start, :enable]
 end
 
-service "php5-fpm" do
+service "php-fpm" do
   supports :status => true, :restart => true, :reload => true
 end

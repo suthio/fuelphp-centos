@@ -6,8 +6,12 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
+
+
 execute "nginx add repo" do
-  command "add-apt-repository ppa:nginx/stable;apt-get update"
+  #command "add-apt-repository ppa:nginx/stable;apt-get update"
+  command "rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm"
   action :run
 end
 
@@ -18,8 +22,8 @@ package "nginx" do
 end
 
 directory "/usr/local/nginx/logs" do
-  owner "root" 
-  group "root" 
+  owner "root"
+  group "root"
   recursive true
   mode 0755
   action :create
@@ -55,4 +59,3 @@ template "/etc/nginx/sites-available/default" do
 
   notifies :reload, "service[nginx]"
 end
-
